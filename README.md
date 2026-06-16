@@ -1,4 +1,4 @@
-# 🎀 MakoCode — 常陆茉子 AI 伴侣
+# MakoCode — 茉子版Agent
 
 <p align="center">
   <strong>一个自带完整 Galgame 界面的桌面 AI 伴侣</strong><br>
