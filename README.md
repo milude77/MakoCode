@@ -80,16 +80,18 @@
 
 <p align="center">
   <img src="assets/screenshots/main-menu.png" alt="Galgame 风格主菜单" width="400">
+  <img src="assets/screenshots/chat.png" alt="茉子对话界面，AI 实时聊天" width="400">
+  <br>
   <img src="assets/screenshots/setup-wizard.png" alt="首次配置向导（含茉子头像对话气泡）" width="400">
-  <br>
   <img src="assets/screenshots/api-config.png" alt="API 配置界面" width="400">
-  <img src="assets/screenshots/preset-modal.png" alt="LLM 供应商预设弹窗" width="400">
   <br>
+  <img src="assets/screenshots/preset-modal.png" alt="LLM 供应商预设弹窗（9家供应商）" width="400">
   <img src="assets/screenshots/settings-panel.png" alt="系统设置面板" width="400">
+  <br>
   <img src="assets/screenshots/character-editor.png" alt="修改茉子人设界面" width="400">
 </p>
 <p align="center">
-  <em>主菜单 ｜ 向导（含头像） ｜ API 配置 ｜ 供应商预设 ｜ 系统设置 ｜ 人设编辑</em>
+  <em>主菜单 ｜ 聊天对话 ｜ 向导 ｜ API 配置 ｜ 供应商预设 ｜ 系统设置 ｜ 人设编辑</em>
 </p>
 
 ---
