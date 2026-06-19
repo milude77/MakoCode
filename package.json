@@ -1,6 +1,6 @@
-﻿{
+{
   "name": "makocode",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "MakoCode - Hitachi Mako Galgame AI Companion",
   "author": "liebaojun",
   "main": "electron-main.js",
@@ -31,7 +31,9 @@
       "include": "installer.nsh"
     },
     "publish": {
-      "provider": "github", "owner": "liebaojun", "repo": "makocode"
+      "provider": "generic",
+      "url": "https://mako-update.example.com/updates",
+      "useMultipleRangeRequest": false
     },
     "asar": false,
     "files": [
@@ -58,7 +60,7 @@
       "!agent-test.txt",
       "!server.py",
       "!index.html",
-      "!涓荤晫闈㈢ず渚?png",
+      "!主界面示例.png",
       "!LICENSE.txt",
       "bundled-tools/**"
     ]
