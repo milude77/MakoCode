@@ -218,6 +218,229 @@ makocode/
 
 ---
 
+---
+
+# MakoCode — Mako-chan Agent
+
+<p align="center">
+  <strong>A desktop AI Agent with a full Galgame-style interface</strong><br>
+  Featuring 常陸茉子 (Hitachi Mako) from *Senren＊Banka* as the character theme,<br>
+  wrapping Claude Code CLI into an immersive visual novel experience
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/main-menu.png" alt="MakoCode Main Interface" width="700">
+</p>
+
+<p align="center">
+  <a href="#-features-en">✨ Features</a> •
+  <a href="#-quick-start-en">🚀 Quick Start</a> •
+  <a href="#-installation-en">📦 Installation</a> •
+  <a href="#-tech-stack-en">🔧 Tech Stack</a> •
+  <a href="#-license-en">📄 License</a>
+</p>
+
+<p align="center">
+  <img src="https://count.getloli.com/@makocode?theme=gelbooru&padding=7&scale=1" alt="visitors">
+</p>
+
+---
+
+## ✨ Features {#features-en}
+
+### 🎮 Galgame Immersive Interface
+- **Character Sprite System**: Dual characters — 常陸茉子 + 朝武芳乃, over 110 PNG expression sprites
+- **Dynamic Position State Machine**: Speaker centers & enlarges, listener shifts side & shrinks, 0.7s smooth transition
+- **Scene Backgrounds**: 6 Japanese-style scenes (Japanese Room / Bathhouse / Dining Hall / Dojo / Inn / Shrine), 1.5s fade-in/out
+- **BGM System**: 30+ original soundtracks from *Senren＊Banka*, auto-switching by scene
+- **Sakura Particles**: 35 petals falling eternally, random size/speed/rotation
+- **Thinking Speech Bubble**: Mako-chan's signature playful popup while AI is thinking
+- **Typewriter Effect**: Character-by-character display + Markdown rendering + KaTeX formula support
+
+<p align="center">
+  <img src="assets/screenshots/chat.png" alt="Mako chat interface — real-time AI conversation" width="700">
+</p>
+
+### 🗣️ Voice System
+- 30 pre-generated greeting voices (GPT-SoVITS TTS)
+- 7 thinking voices ("Hmm.../Nya.../Ah..." etc.)
+- Voice cache management (FIFO, 200MB cap)
+- Independent volume control
+
+### 🔀 Multi-LLM Backend
+One-click switching across 9 AI providers:
+
+| Provider | Preset ID |
+|----------|-----------|
+| 🚀 DeepSeek | `deepseek` |
+| 🏛️ Anthropic | `anthropic` |
+| 🔀 OpenRouter | `openrouter` |
+| ⚡ SiliconFlow | `siliconflow` |
+| ☁️ Alibaba DashScope | `dashscope` |
+| 🌋 Volcano Engine | `volcano` |
+| 💼 Tencent Hunyuan | `tencent` |
+| 🌙 Kimi (Moonshot) | `moonshot` |
+| 🔵 Baidu Qianfan | `qianfan` |
+
+<p align="center">
+  <img src="assets/screenshots/preset-modal.png" alt="LLM provider preset modal — one-click fill API config" width="500">
+</p>
+
+### 🧙 First-Setup Wizard
+- Auto-detects Node.js / Git / Claude Code installation status
+- One-click silent background installation (bundled Node.js + Git installers)
+- API configuration + connection test
+- Vendor preset modal for one-click filling
+
+<p align="center">
+  <img src="assets/screenshots/setup-wizard.png" alt="Mako speech bubble guides installation" width="400">
+  <img src="assets/screenshots/api-config.png" alt="API address/Key/model configuration interface" width="400">
+</p>
+
+### ✏️ Character Customization
+- Built-in Markdown personality editor (main profile + world view dual tabs)
+- Modify character personality, speech style, and world setting
+- Takes effect on new sessions
+
+<p align="center">
+  <img src="assets/screenshots/character-editor.png" alt="Markdown editor for modifying Mako's character profile" width="700">
+</p>
+
+### 📂 Beginner Friendly
+- Settings panel — one-click open Skills / plugin folders
+- File upload (images/documents/code, 50MB limit)
+- 33 quick commands (triggered by typing `/`)
+- Auto-expanding input box (multi-line support)
+- Save system (auto + manual + multi-slot)
+
+<p align="center">
+  <img src="assets/screenshots/settings-panel.png" alt="System settings panel with AI model/env vars/folder shortcuts/personality editor" width="700">
+</p>
+
+### 🔄 Auto-Update
+- In-app update check + background download
+- NSIS silent installation — no manual reinstall needed
+
+---
+
+## 🚀 Quick Start {#quick-start-en}
+
+### Method 1: Download Installer (Recommended)
+
+Download the latest `MakoCode Setup x.x.x.exe` from [Releases](../../releases) and double-click to install.
+
+The installer guides you through:
+1. Auto-detection and installation of Node.js / Git / Claude Code
+2. API configuration (bring your own DeepSeek or other LLM API Key)
+3. Connection test → enter Mako-chan's world
+
+### Method 2: Run from Source
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/liebaojun/makocode.git
+cd makocode
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure API Key
+cp mako-settings.example.json mako-settings.json
+# Edit mako-settings.json, fill in your API Key
+
+# 4. Launch
+npm start
+```
+
+**Prerequisites**: Node.js ≥ 18, Git, Claude Code CLI (`npm install -g @anthropic-ai/claude-code`)
+
+---
+
+## 📦 Installation {#installation-en}
+
+### Build Installer
+
+```bash
+npm run build        # Full NSIS installer → dist/
+npm run build:dir    # Extracted version (debugging)
+```
+
+### Installer Contents
+
+| Component | Size | Description |
+|-----------|------|-------------|
+| MakoCode source + assets | ~400MB | Sprites/BGM/Voice/UI |
+| Node.js installer | ~32MB | Auto-installed |
+| Git installer | ~63MB | Auto-installed |
+| Claude Code CLI | Online download | npm global install |
+
+---
+
+## 🔧 Tech Stack {#tech-stack-en}
+
+| Layer | Technology |
+|-------|-----------|
+| Desktop Framework | Electron 31+ |
+| Frontend | Vanilla HTML + CSS + JavaScript (zero framework) |
+| Backend | Node.js HTTP Server (zero external dependencies) |
+| AI Engine | Claude Code CLI |
+| Build/Distribution | electron-builder + NSIS |
+| Auto-Update | electron-updater (GitHub Releases) |
+| Markdown | marked.js |
+| Formulas | KaTeX |
+| Voice | GPT-SoVITS pre-generated WAV |
+
+### Project Structure
+
+```
+makocode/
+├── electron-main.js      # Electron main process
+├── server.js             # HTTP backend (chat/settings/save)
+├── preload.js            # Electron bridge
+├── galchat.html          # Main UI (chat/character/BGM/sakura)
+├── wizard.html           # First-setup wizard
+├── package.json          # Project + build config
+├── lib/                  # Shared modules (5)
+│   ├── constants.js      #   Global constants
+│   ├── utils.js          #   Utility functions
+│   ├── settings.js       #   Settings management
+│   ├── installer.js      #   Background installer
+│   └── llm-presets.js    #   LLM provider presets
+├── assets/               # Game resources
+│   ├── sprites/          #   Character sprites
+│   ├── backgrounds/      #   Scene backgrounds
+│   ├── bgm/              #   Background music
+│   ├── voice/            #   Voice files
+│   └── images/           #   Avatars/icons
+├── bundled-tools/        # Bundled installers (Node.js MSI + Git EXE)
+├── .claude/              # Claude Code config + Mako-exclusive skills
+└── dist/                 # Build output (not in repo)
+```
+
+---
+
+## ⚠️ Important Notes
+
+### Copyright Notice
+Character sprites, background music, and background images in this software are from **Yuzusoft's *Senren＊Banka***, copyright © Yuzusoft. These assets are for fan non-commercial use only. They will be removed immediately upon request from the rights holder.
+
+### AI-Generated Content
+This software uses AI large language models to generate dialogue. The output may contain inaccurate or inappropriate information. User discretion is advised.
+
+### API Fees
+This software requires you to bring your own LLM API Key (e.g., DeepSeek). API call fees may apply.
+
+---
+
+## 📄 License {#license-en}
+
+- **Code**: MIT License © 2026 [liebaojun](https://github.com/liebaojun)
+- **Assets**: Copyright © Yuzusoft, non-commercial use only
+
+See [LICENSE](LICENSE) for details.
+
+---
+
 <p align="center">
   Made with ❤️ for Mako-chan fans
 </p>
