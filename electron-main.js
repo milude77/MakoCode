@@ -640,7 +640,7 @@ ipcMain.handle('install-update', async () => {
   }
   try {
     // quitAndInstall 会退出应用、运行 NSIS 静默安装、再重启
-    autoUpdater.quitAndInstall(false, true);
+    autoUpdater.quitAndInstall(true, true);
     return { ok: true };
   } catch (err) {
     log(`Auto-update: install failed: ${err.message}`);
@@ -708,7 +708,7 @@ app.on('before-quit', () => {
   if (updateStatus.state === 'downloaded' && autoUpdater) {
     killServerProc(); // 先杀子进程，避免文件锁导致 NSIS 安装失败
     try {
-      autoUpdater.quitAndInstall(false, true);
+      autoUpdater.quitAndInstall(true, true);
       return; // quitAndInstall 会接管退出流程
     } catch (err) {
       log(`Auto-update: quitAndInstall failed: ${err.message}`);
